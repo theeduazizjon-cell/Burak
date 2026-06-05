@@ -1,3 +1,5 @@
+export default MemberType;
+
 import {ObjectId} from "mongoose";
 import { MemberType, MemberStatus } from "../enums/member.enum";
 

@@ -1,8 +1,9 @@
 import {Request, Response} from "express";
 import {T} from "../libs/types/common";
 import MemberService from "../models/Member.service";
-import { LoginInput, MemberInput } from "../libs/types/member";
-import MemberType  from "../libs/types/member";
+import { LoginInput, MemberInput} from "../libs/types/member";
+import { MemberType } from "../libs/enums/member.enum";
+
 
 
 const restaurantController: T = {}; 

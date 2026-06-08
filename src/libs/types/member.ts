@@ -1,5 +1,3 @@
-export default MemberType;
-
 import {ObjectId} from "mongoose";
 import { MemberType, MemberStatus } from "../enums/member.enum";
 
@@ -34,5 +32,5 @@ export interface MemberInput {
 export interface LoginInput {
     memberNick: string ; 
     memberPassword: string; 
-    
+
 }

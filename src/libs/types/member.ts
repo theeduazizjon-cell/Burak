@@ -30,3 +30,9 @@ export interface MemberInput {
     createdAt: Date; 
     updatedAt: Date;
 }
+
+export interface LoginInput {
+    memberNick: string ; 
+    memberPassword: string; 
+    
+}

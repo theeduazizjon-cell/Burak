@@ -12,7 +12,7 @@ class MemberService {
 
     public async processSignup(input: MemberInput) : Promise<Member> {
         const exist = await this.memberModel
-        .findOne({ MemberType: MemberType.RESTAURANT}) 
+        .findOne({ memberType: MemberType.RESTAURANT}) 
         .exec();
 
         if (exist) {
@@ -21,7 +21,7 @@ class MemberService {
         
         try {
             const result = await this.memberModel.create(input);
-            result.MemberPassword = ""; // Hide password in response 
+            result.memberPassword = ""; // Hide password in response 
             return result;
         } catch (err) {
             console.log("Error, MemberService, processSignup:", err);

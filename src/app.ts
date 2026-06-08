@@ -5,20 +5,20 @@ import routerAdmin from "./routerAdmin";
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
 
-/* 1-ENTRANCE */
+/* 1-ENTRANCE */ // app.ts -> idnex.ts -> server.ts 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(morgan(MORGAN_FORMAT));
 
-/* 2-SESSIONS */
+/* 2-SESSIONS */ // 
 
-/* 3 -VIEWS */ 
+/* 3 -VIEWS */  // -> VIEWS builds html on BACKEND and send to Frontend | API -> FRONTEND builds html on FRONTEND and send to Browser
 app.set('views',path.join(__dirname, 'views'));
 app.set('view engine', "ejs");
 
-/* 4-ROUTERS */
+/* 4-ROUTERS */ // 
 app.use("/admin", routerAdmin);
 app.use("/",router); // Middleware Design Pattern 
 

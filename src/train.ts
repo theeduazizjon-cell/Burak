@@ -17,3 +17,8 @@ Rest API
 GraphQL API
 
 */
+
+/*
+Traditional Frontend Development => BSSR -> BackEnd Server Side Rendering | EJS 
+Modern FrontEnd Development => SPA -> Single Page Application | React library 
+*/

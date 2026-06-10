@@ -8,4 +8,10 @@ import memberController from "./controllers/member.controller";
 
 //router.get('/signup',memberController.getSignup); 
 
+
+
+// CALLING PART 
+router.post("/login", memberController.login); 
+router.post("/signup",memberController.signup);
+
 export default router; // modele.exports

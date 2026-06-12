@@ -3,12 +3,11 @@ import {T} from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import { LoginInput, AdminRequest, MemberInput} from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
-
-
+import {Message} from "../libs/Error";
  const memberService = new MemberService();
 
 const restaurantController: T = {}; 
-restaurantController.goHome = (req: Request, res:Response) => {
+restaurantController.goHome = (req: AdminRequest, res:Response) => {
     try {
           console.log("goHome"); // send | json | redirect | render 
           // LOGIC 
@@ -20,7 +19,7 @@ restaurantController.goHome = (req: Request, res:Response) => {
     }
 };
 
-restaurantController.getSignup = (req: Request, res:Response) => {
+restaurantController.getSignup = (req: AdminRequest, res:Response) => {
     try {
             console.log("getSignup");
           res.render("signup");
@@ -29,7 +28,7 @@ restaurantController.getSignup = (req: Request, res:Response) => {
     }
 };
 
-restaurantController.goLogin = (req: Request, res:Response) => {
+restaurantController.goLogin = (req: AdminRequest, res:Response) => {
     try {
           console.log("goLogin");
           res.render("login");
@@ -39,7 +38,7 @@ restaurantController.goLogin = (req: Request, res:Response) => {
 };
 
 
-restaurantController.processSignup = async (req: Request, res:Response) => {
+restaurantController.processSignup = async (req: AdminRequest, res:Response) => {
     try {
             console.log("processSignup");
             console.log("body:",req.body);
@@ -62,7 +61,7 @@ restaurantController.processSignup = async (req: Request, res:Response) => {
     }
 };
 
-restaurantController.processLogin = async (req: Request, res:Response) => {
+restaurantController.processLogin = async (req: AdminRequest, res:Response) => {
     try {
             console.log("processLogin");
             console.log("body,.req,body");
@@ -79,6 +78,16 @@ restaurantController.processLogin = async (req: Request, res:Response) => {
     }
 };
 
+restaurantController.checkAuthSession = async (req: AdminRequest, res:Response) => {
+    try {
+            console.log("checkAuthSession");
+            if(req.session?.member) res.send(`Hi, ${req.session.member.memberNick}`);
+            else res.send(Message.NOT_AUTHENTICATED);
+    } catch (err){
+        console.log("Error, checkAuthSession:", err);
+        res.send(err);
+    }
+};
 
 
 export default restaurantController; 

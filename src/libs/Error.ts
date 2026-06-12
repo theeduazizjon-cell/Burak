@@ -20,6 +20,7 @@ export enum Message {
     LOGIN_FAILED = "Login failed!", 
     USED_NICK_PHONE = "Nickname or phone number aready used!", 
     WRONG_PASSWORD = "Wrong password!", 
+    NOT_AUTHENTICATED = "You are not authenticated, please login first",
 }
 
 class Errors extends Error {

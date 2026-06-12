@@ -5,7 +5,7 @@ import { LoginInput, AdminRequest, MemberInput} from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 import {Message} from "../libs/Error";
 import Errors from "../libs/Error";
-" 
+
 
 const memberService = new MemberService();
 
@@ -51,7 +51,7 @@ restaurantController.processSignup = async (req: AdminRequest, res:Response) => 
             const result = await memberService.processSignup(newMember);
             // TO DO: SESSIONS AUTHENTIFICATION 
 
-            (req.session as any).member = result; 
+            req.session.member = result; 
             req.session.save(function(){
                 res.send(result);
             });

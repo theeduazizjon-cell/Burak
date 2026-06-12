@@ -1,3 +1,25 @@
+// R-TASK
+
+/* 
+Masalaning sharti: 
+Shunday function yozing, u string parametrga ega bolsin. 
+String "1+2" holatda pass qilinganda string ichidagi sonlar yigindisini number holatda qaytarsin.
+
+MASALAN: calculate("1+3") return 4;
+
+Masalaning yechimi :
+*/ 
+function calculate(str: string): number {
+  return str
+    .split("+")
+    .map(Number)
+    .reduce((sum, num) => sum + num, 0);
+}
+
+console.log(calculate("1+3")); // 4
+console.log(calculate("1+2")); // 3
+console.log(calculate("5+10")); // 15
+
 // TASK Q:
 
 /*
@@ -13,7 +35,8 @@ MASALAN: hasProperty({ name: "BMW", model: "M3" }, "model"); return true;
 Ushbu misolda, 'model' string, objectning propertysiga mos kelganligi uchun 'true' natijani qaytarmoqda
 */ 
 
-// Masalaning yechimi: 
+/*
+Masalaning yechimi: 
 
 function hasProperty(obj: object, prop: string): boolean {
     return Object.prototype.hasOwnProperty.call(obj, prop);

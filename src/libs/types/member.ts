@@ -40,5 +40,5 @@ export interface LoginInput {
 
 export interface AdminRequest extends Request {
     member: Member;
-    sessions: Session & {member: Member};
+    sessions: Session & { member: Member };
 }

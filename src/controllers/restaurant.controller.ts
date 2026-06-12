@@ -4,7 +4,10 @@ import MemberService from "../models/Member.service";
 import { LoginInput, AdminRequest, MemberInput} from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
 import {Message} from "../libs/Error";
- const memberService = new MemberService();
+import Errors from "../libs/Error";
+" 
+
+const memberService = new MemberService();
 
 const restaurantController: T = {}; 
 restaurantController.goHome = (req: AdminRequest, res:Response) => {
@@ -13,7 +16,7 @@ restaurantController.goHome = (req: AdminRequest, res:Response) => {
           // LOGIC 
           // Service Model
           // ... 
-          res.render("home");
+          res.render("home"); // send | render | 
     } catch (err){
         console.log("Error, goHome:", err);
     }
@@ -48,7 +51,7 @@ restaurantController.processSignup = async (req: AdminRequest, res:Response) => 
             const result = await memberService.processSignup(newMember);
             // TO DO: SESSIONS AUTHENTIFICATION 
 
-            req.session.member = result; 
+            (req.session as any).member = result; 
             req.session.save(function(){
                 res.send(result);
             });
@@ -68,12 +71,22 @@ restaurantController.processLogin = async (req: AdminRequest, res:Response) => {
             const input: LoginInput = req.body;
             const result = await memberService.processLogin(input);
 
-        
-
-
           res.send(result);
     } catch (err){
         console.log("Error, processLogin:", err);
+        const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
+        res.send(err);
+    }
+};
+
+restaurantController.logout = async (req: AdminRequest, res:Response) => {
+    try {
+            console.log("logout");
+            req.session.destroy(function(){
+                res.redirect("/admin");
+            })
+    } catch (err){
+        console.log("Error, logout", err);
         res.send(err);
     }
 };

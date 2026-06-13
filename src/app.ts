@@ -4,6 +4,7 @@ import router from "./router";
 import routerAdmin from "./routerAdmin";
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
+import {T} from "./libs/types/common";
 
 import session from "express-session"; 
 import ConnectMongoDB from "connect-mongodb-session";
@@ -34,6 +35,10 @@ app.use(
     })
 ); 
 
+app.use(function(req, res, next) {
+    const sessionInstance = req.session as T; 
+    res.locals.member = sessionInstance.member;
+})
 
 
 /* 3 -VIEWS */  // -> VIEWS builds html on BACKEND and send to Frontend | API -> FRONTEND builds html on FRONTEND and send to Browser

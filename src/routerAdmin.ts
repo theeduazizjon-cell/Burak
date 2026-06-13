@@ -19,7 +19,11 @@ routerAdmin.get("/logout",restaurantController.logout);
 
 
 // Products // 
-routerAdmin.get("/product/all", productController.getAllProducts);
+routerAdmin.get("/products/all", 
+    restaurantController.verifyRestaurant, 
+    productController.getAllProducts
+); 
+
 routerAdmin.post("/product.create", productController.createNewProduct); 
 routerAdmin.post("/product/:id", productController.updateChosenProduct);
 

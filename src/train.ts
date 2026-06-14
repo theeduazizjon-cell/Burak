@@ -1,3 +1,26 @@
+// S - TASK 
+
+/* 
+Masalaning sharti: 
+Shunday function yozing, u numberlardan tashkil topgan
+ list qabul qilsin va osha numberlar orasidagi tushib qolgan
+  sonni topib uni return qilsin 
+  
+  MASALAN: missing_number([3, 0, 1]) 
+  return 2
+
+*/ 
+
+function missingNumber(numbers: number[]): number {
+  const n = numbers.length;
+  const expectedSum = (n * (n + 1)) / 2;
+  const actualSum = numbers.reduce((sum, num) => sum + num, 0);
+
+  return expectedSum - actualSum;
+}
+
+console.log(missingNumber([3, 0, 1])); // 2
+
 // R-TASK
 
 /* 
@@ -8,7 +31,7 @@ String "1+2" holatda pass qilinganda string ichidagi sonlar yigindisini number h
 MASALAN: calculate("1+3") return 4;
 
 Masalaning yechimi :
-*/ 
+/*
 function calculate(str: string): number {
   return str
     .split("+")

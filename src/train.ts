@@ -60,7 +60,8 @@ Project Standards:
 */
 
 
-/*
+/* 
+Request 
 Traditional API 
 Rest API 
 GraphQL API
@@ -70,4 +71,20 @@ GraphQL API
 /*
 Traditional Frontend Development => BSSR -> BackEnd Server Side Rendering | EJS 
 Modern FrontEnd Development => SPA -> Single Page Application | React library 
+*/
+
+/* 
+Cookies: 
+ request join 
+ self destroy
+
+*/
+
+/* 
+Validations: 
+-FrontEnd validation 
+-
+-BackEnd validation 
+-Database validation
+
 */

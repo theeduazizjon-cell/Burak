@@ -47,17 +47,13 @@ restaurantController.processSignup = async (req: AdminRequest, res:Response) => 
             console.log("body:",req.body);
 
             const newMember = req.body;
-            newMember.MemberType = MemberType.RESTAURANT;
+            newMember.memberType = MemberType.RESTAURANT;
             const result = await memberService.processSignup(newMember);
-            // TO DO: SESSIONS AUTHENTIFICATION 
 
-            req.session.member = result; 
+            req.session.member = result;
             req.session.save(function(){
                 res.send(result);
             });
-
-          
-            res.send(result);
     } catch (err){
         console.log("Error, processSignup:", err);
         res.send(err);
@@ -71,7 +67,10 @@ restaurantController.processLogin = async (req: AdminRequest, res:Response) => {
             const input: LoginInput = req.body;
             const result = await memberService.processLogin(input);
 
-          res.send(result);
+            req.session.member = result;
+            req.session.save(function(){
+                res.send(result);
+            });
     } catch (err){
         console.log("Error, processLogin:", err);
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
@@ -114,7 +113,7 @@ restaurantController.verifyRestaurant = (
         } else {
             const message  = Message.NOT_AUTHENTICATED; 
         res.send(
-            `<script> alert("${message}"); window.location.replace('/admin/login);</script>`
+            `<script> alert("${message}"); window.location.replace('/admin/login');</script>`
         );
 
         }

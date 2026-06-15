@@ -130,7 +130,7 @@ restaurantController.verifyRestaurant = (
         );
 
         }
-
+}
 };
 
 

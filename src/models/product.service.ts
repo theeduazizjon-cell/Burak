@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { shapeIntoMongooseObjectId } from "../libs/config";
 import Errors, { HttpCode, Message } from "../libs/Error";
 import {
@@ -21,7 +22,15 @@ class ProductService {
 
     // BSSR 
 
-    public async createNewProduct(input: ProductInput): Promise<Product> {
+    public async getAlProducts(): Promise<Product[]> {
+        const result = await this.productModel.find().exec();
+        if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+        return result; 
+    }
+    
+
+      public async createNewProduct(input: ProductInput): Promise<Product> {
         try {
             return await this.productModel.create(input);
 
@@ -31,8 +40,8 @@ class ProductService {
         }
     }
 
-    public async updateChosenProduct(
-        id: string, 
+      public async updateChosenProduct(
+        id: string | mongoose.Types.ObjectId,
         input: ProductUpdateInput
     ): Promise<Product> {
        // string => ObjectId 

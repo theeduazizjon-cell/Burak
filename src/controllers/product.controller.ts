@@ -18,8 +18,11 @@ const productService = new ProductService();
 productController.getAllProducts = async (req: AdminRequest, res:Response) => {
     try {
             console.log("getAllProducts");
-            console.log("req.member", req.member);
-            res.render("products");
+            const data = await productService.getAlProducts();
+            console.log("data:", data)
+
+
+            res.render("products", {products: data});
     } catch (err){
         console.log("Error , getAllProducts", err);
         if (err instanceof Errors) res.status(err.code).json(err); 

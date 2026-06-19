@@ -1,3 +1,22 @@
+/* 
+
+T - TASK 
+
+Masalaning shart: Shunday function tuzing, 
+u sonlardan tashkil topgan 2'ta array qabul qilsin.
+Va ikkala arraydagi sonlarni tartiblab bir arrayda qaytarsin.
+
+MASALAN: mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]); return [0, 3, 4, 4, 6, 30, 31];
+
+*/ 
+
+function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+  const merged = [...arr1, ...arr2];
+  return merged.sort((a, b) => a - b);
+}
+
+console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
+
 // S - TASK 
 
 /* 
@@ -9,7 +28,7 @@ Shunday function yozing, u numberlardan tashkil topgan
   MASALAN: missing_number([3, 0, 1]) 
   return 2
 
-*/ 
+
 
 function missingNumber(numbers: number[]): number {
   const n = numbers.length;
@@ -20,6 +39,8 @@ function missingNumber(numbers: number[]): number {
 }
 
 console.log(missingNumber([3, 0, 1])); // 2
+*/ 
+
 
 // R-TASK
 

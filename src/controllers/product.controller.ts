@@ -7,7 +7,13 @@ import { ProductInput } from "../libs/types/product";
 
 
 const productController: T = {}; 
+
 const productService = new ProductService();
+
+// SPA 
+
+
+// BSSR 
 
 productController.getAllProducts = async (req: AdminRequest, res:Response) => {
     try {

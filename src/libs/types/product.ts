@@ -45,3 +45,4 @@ export interface ProductUpdateInput {
     productImages?: string[]; // cuz i am using ts which means string of array
     productViews?: number; 
 }
+ 

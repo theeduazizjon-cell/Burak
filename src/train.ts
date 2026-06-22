@@ -1,5 +1,36 @@
 /* 
 
+U - TASK 
+
+Masalaning sharti: 
+Shunday function tuzing, uni number parametri bo'lsin.
+Va bu function berilgan parametrgacha, 0'dan boshlab
+oraliqda nechta toq sonlar borligini aniqlab return qilsi.
+
+MASALAN: sumOdds(9) return 4; sumOdds(11) return 5;
+
+Masalaning yechimi: 
+
+*/ 
+
+function sumOdds(num: number): number {
+  let count = 0;
+
+  for (let i = 0; i < num; i++) {
+    if (i % 2 !== 0) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+console.log(sumOdds(9));  // 4
+console.log(sumOdds(11)); // 5
+
+
+/* 
+
 T - TASK 
 
 Masalaning shart: Shunday function tuzing, 
@@ -8,7 +39,7 @@ Va ikkala arraydagi sonlarni tartiblab bir arrayda qaytarsin.
 
 MASALAN: mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]); return [0, 3, 4, 4, 6, 30, 31];
 
-*/ 
+
 
 function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
   const merged = [...arr1, ...arr2];

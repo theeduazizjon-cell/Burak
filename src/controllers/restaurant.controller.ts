@@ -114,6 +114,28 @@ restaurantController.checkAuthSession = async (req: AdminRequest, res:Response) 
     }
 };
 
+restaurantController.getUsers =  async (req: AdminRequest, res:Response) => {
+    try {
+          console.log("getUsers");
+          const result = await memberService.getUsers();
+          console.log("result", result);  
+          res.render("users", {users: result }); // tells Express: build an HTML page using an EJS view file.
+    } catch (err){
+        console.log("Error, getUsers", err);
+        res.redirect("/admin/login");
+    }
+};
+
+restaurantController.updateChosenUser= (req: AdminRequest, res:Response) => {
+    try {
+          console.log("goLogin");
+          res.render("login");
+    } catch (err){
+        console.log("Error, goLogin:", err);
+        res.redirect("/admin");
+    }
+};
+
 restaurantController.verifyRestaurant = (
     req: AdminRequest, 
     res:Response, 

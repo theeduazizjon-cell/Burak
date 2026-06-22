@@ -12,10 +12,8 @@ const memberService = new MemberService();
 const restaurantController: T = {}; 
 restaurantController.goHome = (req: AdminRequest, res:Response) => {
     try {
-          console.log("goHome"); // send | json | redirect | render 
-          // LOGIC 
-          // Service Model
-          // ... 
+          console.log("goHome"); 
+          // send | json | redirect | render 
           res.render("home"); // send | render | 
     } catch (err){
         console.log("Error, goHome:", err);

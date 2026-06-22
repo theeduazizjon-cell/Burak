@@ -126,12 +126,15 @@ restaurantController.getUsers =  async (req: AdminRequest, res:Response) => {
     }
 };
 
-restaurantController.updateChosenUser= (req: AdminRequest, res:Response) => {
+restaurantController.updateChosenUser = async (req: AdminRequest, res:Response) => {
     try {
           console.log("goLogin");
-          res.render("login");
+          const result = await memberService.updateChosenUSer(req.body); 
+          res.status(HttpCode.OK).json({ data: result });
     } catch (err){
         console.log("Error, goLogin:", err);
+        if (err instanceof Errors) res.status(err.code).json(err);
+        else res.status(Errors.standard.code).json(Errors.standard);
         res.redirect("/admin");
     }
 };

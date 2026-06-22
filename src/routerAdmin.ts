@@ -39,7 +39,8 @@ routerAdmin.post("/product/create",
 routerAdmin.post(
     "/product/:id", 
     restaurantController.verifyRestaurant, 
-    productController.updateChosenProduct);
+    productController.updateChosenProduct
+);
 
 
 
@@ -48,6 +49,14 @@ routerAdmin.post(
 routerAdmin.get(
     "/user/all", 
     restaurantController.verifyRestaurant,
-    restaurantController.getUsers);
+    restaurantController.getUsers
+);
+
+routerAdmin.post(
+    "/user/edit",
+    restaurantController.verifyRestaurant, 
+    restaurantController.updateChosenUser 
+);
+
 
 export default routerAdmin; // modele.exportss

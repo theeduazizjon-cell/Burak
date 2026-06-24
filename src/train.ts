@@ -137,7 +137,7 @@ Project Standards:
 
 /* 
 Request 
-Traditional API 
+Traditional API => from POST 
 Rest API 
 GraphQL API
 

@@ -87,6 +87,7 @@ restaurantController.processLogin = async (req: AdminRequest, res:Response) => {
         res.send(
             `<script> alert("${message}"); window.location.replace('admin/signup) </script>`
         );
+    }
 };
 
 restaurantController.logout = async (req: AdminRequest, res:Response) => {
@@ -153,8 +154,7 @@ restaurantController.verifyRestaurant = (
         );
 
         }
-}
 };
 
 
-export default restaurantController; 
+export default restaurantController;

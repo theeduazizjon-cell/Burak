@@ -28,6 +28,6 @@ $(function () {
         .catch((err)=> {
             console.log("err");
             alert("User update failed!"); 
-        })
-    })
+        });
+    });
 });

@@ -19,10 +19,10 @@ function fitElementToParent(el, padding) {
 }
 
 (function () {
-  const sphereEl = document.querySelector(".sphere-animation");
-  const spherePathEls = sphereEl.querySelectorAll(".sphere path");
-  const pathLength = spherePathEls.length;
-  const animations = [];
+  const sphereEl = document.querySelector(".sphere-animation"), 
+   spherePathEls = sphereEl.querySelectorAll(".sphere path"),
+   pathLength = spherePathEls.length,
+   animations = [];
 
   fitElementToParent(sphereEl);
 

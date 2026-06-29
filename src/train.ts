@@ -1,5 +1,56 @@
-/* 
+/*
 
+TASK X
+
+Masalaning sharti: 
+Shunday function yozing, uni object va string parametrlari bo'lsin.
+Bu function, birinchi object parametri tarkibida, kalit sifatida ikkinchi string parametri
+necha marotaba takrorlanganlini sanab qaytarsin.
+
+Eslatma => Nested object'lar ham sanalsin
+
+MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2
+
+Yuqoridagi misolda, birinchi argument object, ikkinchi argument 'model'.
+Funktsiya, shu ikkinchi argument 'model', birinchi argument object
+tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
+
+*/ 
+
+function countOccurrences(obj: Record<string, any>, targetKey: string): number {
+  let count = 0;
+
+  for (const key in obj) {
+    if (key === targetKey) {
+      count++;
+    }
+
+    if (
+      typeof obj[key] === "object" &&
+      obj[key] !== null
+    ) {
+      count += countOccurrences(obj[key], targetKey);
+    }
+  }
+
+  return count;
+}
+
+// Example
+console.log(
+  countOccurrences(
+    {
+      model: "Bugatti",
+      steer: {
+        model: "HANKOOK",
+        size: 30,
+      },
+    },
+    "model"
+  )
+);
+
+/*
 TASK W
 
 Masalaning shart: 
@@ -14,7 +65,7 @@ return [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]];
 
 Yuqoridagi namunada berilayotgan array ikkinchi parametr 3'ga
 asoslanib 3 bo'lakga bo'linib qaytmoqda. Qolgani esa o'z holati qolyapti
-*/ 
+*
 
 
 function chunkArray(array: number[], size: number): number[][] {

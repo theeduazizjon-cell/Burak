@@ -1,5 +1,39 @@
 /*
 
+TASK Y
+
+Masalaning sharti: 
+
+Shunday function yozing, uni 2'ta array parametri bo'lsin.
+Bu function ikkala arrayda ham ishtirok etgan bir xil
+qiymatlarni yagona arrayga joylab qaytarsin.
+
+MASALAN: findIntersection([1,2,3], [3,2,0]) return [2,3]
+
+Yuqoridagi misolda, argument sifatida berilayotgan array'larda
+o'xshash sonlar mavjud. Function'ning vazifasi esa ana shu
+ikkala array'da ishtirok etgan o'xshash sonlarni yagona arrayga
+joylab return qilmoqda
+
+*/ 
+
+function findIntersection(arr1: number[], arr2: number[]): number[] {
+  const set2 = new Set(arr2);
+  const result: number[] = [];
+
+  for (const num of arr1) {
+    if (set2.has(num) && !result.includes(num)) {
+      result.push(num);
+    }
+  }
+
+  return result;
+}
+
+console.log(findIntersection([1, 2, 3], [3, 2, 0]));
+
+
+/* 
 TASK X
 
 Masalaning sharti: 
@@ -15,7 +49,7 @@ Yuqoridagi misolda, birinchi argument object, ikkinchi argument 'model'.
 Funktsiya, shu ikkinchi argument 'model', birinchi argument object
 tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
 
-*/ 
+
 
 function countOccurrences(obj: Record<string, any>, targetKey: string): number {
   let count = 0;

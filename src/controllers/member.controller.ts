@@ -3,9 +3,12 @@ import {T} from "../libs/types/common";
 import MemberService from "../models//Member.service";
 import { LoginInput , Member , MemberInput } from "../libs/types/member";
 import Errors from "../libs/Error";
+import AuthService from "../models/Auth.service";
 
 const memberService = new MemberService();
 const memberController: T = {}; 
+
+const authService = new AuthService(); 
 
  /*
  memberController.goHome = (req: Request, res:Response) => {
@@ -40,7 +43,9 @@ memberController.signup = async (req: Request, res:Response) => {
             console.log("signup");
             const input: MemberInput = req.body, 
             result: Member = await memberService.signup(input);
-            // TO DO: TOKENS AUTGHenTIFICATION 
+            // TO DO: TOKENS AUTHENTICATION 
+
+            const token = await authService.createToken(result);
           
             res.json({member: result});
     } catch (err){
@@ -55,7 +60,12 @@ memberController.login = async (req: Request, res:Response) => {
     try {
             console.log("login");
             const input: LoginInput = req.body, 
-            result = await memberService.login(input); // why underlying it red ? Login was already imported 
+            result = await memberService.login(input),  // why underlying it red ? Login was already imported
+            token = await authService.createToken(result); 
+            // TO DO: TOKENS AUTHENTICATION 
+            
+
+
 
 
           res.send({member: result});

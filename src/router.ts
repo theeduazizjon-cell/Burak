@@ -10,8 +10,14 @@ import memberController from "./controllers/member.controller";
 
 
 
-// CALLING PART 
-router.post("/login", memberController.login); 
-router.post("/signup",memberController.signup);
+// CALLING PART -> REST API 
+// => Member
+router.post("/member/login", memberController.login); 
+router.post("/member/signup",memberController.signup);
+router.get("/member/detail", memberController.verifyAuth);
 
+
+// => Product
+
+// => Order
 export default router; // modele.exports

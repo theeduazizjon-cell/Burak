@@ -19,7 +19,7 @@ const store = new MongoDBStore({
 /* 1-ENTRANCE */ // app.ts -> idnex.ts -> server.ts 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true})); // rest api support ?
 app.use(express.json());
 app.use(cookieParser()); 
 app.use(morgan(MORGAN_FORMAT));

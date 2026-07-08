@@ -30,6 +30,7 @@ router.get(
     uploader("members").single("memberImage")
 ); 
 
+router.get("/member/top-users",memberController.getTopUsers);
 
 // => Product
 

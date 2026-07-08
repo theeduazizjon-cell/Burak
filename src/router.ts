@@ -13,6 +13,7 @@ import uploader from "./libs/utils/uploader";
 
 // CALLING PART -> REST API | Middle Ware 
 // => Member
+router.get("/member/restaurant", memberController.getRestauarant);
 router.post("/member/login", memberController.login); 
 router.post("/member/signup",memberController.signup);
 router.post(

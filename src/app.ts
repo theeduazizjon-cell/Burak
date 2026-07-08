@@ -19,6 +19,7 @@ const store = new MongoDBStore({
 /* 1-ENTRANCE */ // app.ts -> idnex.ts -> server.ts 
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/uploads", express.static("./uploads")); // when data comes with uploads send it to static folder
 app.use(express.urlencoded({extended:true})); // rest api support ?
 app.use(express.json());
 app.use(cookieParser()); 

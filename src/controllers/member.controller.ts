@@ -169,14 +169,14 @@ memberController.verifyAuth = async (req: ExtendedRequest, res: Response, next: 
     }
 };
 
-memberController.retieveAuth = async (req: ExtendedRequest, res: Response, next: NextFunction) => {
+memberController.retrieveAuth = async (req: ExtendedRequest, res: Response, next: NextFunction) => {
     try {
-        const token = req.cookies["accessToken"]; 
+        const token = req.cookies["accessToken"];
         if(token) req.member = await authService.checkAuth(token);
 
         next();
     } catch (err) {
-        console.log("Error,retueveAuth", err); 
+        console.log("Error,retueveAuth", err);
         next();
     }
 };

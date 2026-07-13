@@ -14,7 +14,7 @@ import productController from './controllers/product.controller';
 
 // CALLING PART -> REST API | Middle Ware 
 // => Member
-router.get("/member/restaurant", memberController.getRestauarant);
+router.get("/member/restaurant", memberController.getRestaurant);
 router.post("/member/login", memberController.login); 
 router.post("/member/signup",memberController.signup);
 router.post(

@@ -30,8 +30,8 @@ class ProductService {
         console.log("inquiry", inquiry); 
         const match: T = {productStatus: ProductStatus.PROCESS};
 
-        if(inquiry.productCollection) 
-            match.productCollect = inquiry.productCollection;
+        if(inquiry.productCollection)
+            match.productCollection = inquiry.productCollection;
         if(inquiry.search) {
             match.productName = {$regex: new RegExp(inquiry.search, "i") }; 
         }
@@ -51,7 +51,7 @@ class ProductService {
         .exec();
         if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
-        return [];
+        return result;
     }
 
     public async getProduct(memberId: ObjectId | null, id: string): Promise<void> {

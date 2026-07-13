@@ -43,8 +43,8 @@ class MemberService {
         const member = await this.memberModel 
         .findOne(
             { 
-                memberNick: input.memberNick, 
-                memberStatus: {$ne: MemberStatus}
+                memberNick: input.memberNick,
+                memberStatus: {$ne: MemberStatus.DELETE}
             },           
             { memberNick: 1, memberPassword: 1, memberStatus: 1}
         )
@@ -102,11 +102,11 @@ public async getTopUsers(): Promise<Member[]> {
     })
     .sort({memberPoints: -1})
     .limit(4)
-    .exec(); 
+    .exec();
 
     if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
-    return [];
+    return result;
 }
 
     // BSSR 

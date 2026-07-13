@@ -41,9 +41,9 @@ const memberSchema = new Schema({
         type:String,
     }, 
 
-    memberImnage:{
+    memberImage:{
         type:String,
-    }, 
+    },
 
     memberPoints: {
         type:Number,

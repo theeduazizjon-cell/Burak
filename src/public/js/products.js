@@ -1,7 +1,7 @@
 console.log("Products frontend javascript file");
 
 $(function () {
-    $(".product-collection").on("chnage", () => {
+    $(".product-collection").on("change", () => {
         const selectedValue = $(".product-collection").val(); 
         if (selectedValue === 'DRINK') {
             $("#product-collection").hide(); 

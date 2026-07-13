@@ -1,8 +1,8 @@
 console.log("Signup frontend javascript file"); 
 
 $(function () {
-    constTarget =$(".file-box .upload-hidden");
-    let filename; 
+    const fileTarget = $(".file-box .upload-hidden");
+    let filename;
 
     fileTarget.on("change", function () {
         if(window.FileReader) {
@@ -34,28 +34,30 @@ function validateSignUpForm() {
      memberNick = $(".member-nick").val(), 
      memberPhone = $(".member-phone").val(),  
      memberPassword = $(".member-password").val(),  
-     confirmPassoword = $(".confirm-password").val(); 
+     confirmPassword = $(".confirm-password").val(); 
 
     if(
         memberNick === "" || 
         memberPhone === "" ||
         memberPassword === "" ||
-        confirmPassowrd === "" 
+        confirmPassword === ""
     ) {
         alert("Please insert all required inputs"); 
         return false; 
     }
-    if (memberPassword !== confirmPassoword) {
+    if (memberPassword !== confirmPassword) {
         alert("Password differs, please check!"); 
           return false;
     }
    
-    const memberImage = $(".member-image").get(0).files[0].name
-        ? $(".member-image").get(0).files[0].name 
+    const memberImageFiles = $(".member-image").get(0).files;
+    const memberImage = memberImageFiles.length
+        ? memberImageFiles[0].name
         : null;
     if (!memberImage) {
-        alert("Please insert restaurant image!"); 
-        return false; 
+        alert("Please insert restaurant image!");
+        return false;
     }
 
+    return true;
 }

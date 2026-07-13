@@ -9,10 +9,10 @@ import {
 const productSchema = new Schema (
     {
         productStatus: {
-            type: String, 
-            enum: ProductStatus, 
-            defualt: ProductStatus.PAUSE, 
-        }, 
+            type: String,
+            enum: ProductStatus,
+            default: ProductStatus.PROCESS,
+        },
         productCollection: {
             type: String, 
             enum: ProductCollection,
@@ -32,10 +32,10 @@ const productSchema = new Schema (
             required: true, 
         }, 
         productSize: {
-            type: String, 
-            enum: ProductSize, 
-            default: ProductStatus.PAUSE, 
-        }, 
+            type: String,
+            enum: ProductSize,
+            default: ProductSize.NORMAL,
+        },
         productVolume: {
             type: Number , 
             enum: ProductVolume,
@@ -45,10 +45,10 @@ const productSchema = new Schema (
             type:String, 
             required: true , 
         }, 
-        productImage: {
-            type: [String], 
-            default: [], 
-        }, 
+        productImages: {
+            type: [String],
+            default: [],
+        },
         productViews: {
             type:Number, 
             default: 0, 

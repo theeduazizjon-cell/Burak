@@ -63,7 +63,7 @@ restaurantController.processSignup = async (
         const message = 
             err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
         res.send(
-            `<script> alert("${message}"); window.location.replace('admin/signup) </script>`
+            `<script> alert("${message}"); window.location.replace('/admin/signup') </script>`
         );
     }
 };
@@ -86,7 +86,7 @@ restaurantController.processLogin = async (req: AdminRequest, res:Response) => {
          const message = 
             err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
         res.send(
-            `<script> alert("${message}"); window.location.replace('admin/signup) </script>`
+            `<script> alert("${message}"); window.location.replace('/admin/signup') </script>`
         );
     }
 };
@@ -135,7 +135,6 @@ restaurantController.updateChosenUser = async (req: AdminRequest, res:Response) 
         console.log("Error, goLogin:", err);
         if (err instanceof Errors) res.status(err.code).json(err);
         else res.status(Errors.standard.code).json(Errors.standard);
-        res.redirect("/admin");
     }
 };
 

@@ -73,9 +73,9 @@ class ProductService {
                 viewRefId: productId,
                 viewGroup: ViewGroup.PRODUCT,
             };
-            const existView = await this.viewService
+            const existView = await this.viewService.checkViewExistence(input);
 
-            // Insert New View Log 
+            // Insert New View Log
             console.log("existView", !!existView); 
             if(!existView){
                 console.log("Planning to insert new view");

@@ -14,8 +14,9 @@ class OrderService {
     private readonly memberService: any; 
 
     constructor() {
-        this.orderModel = OrderModel; 
-        this.orderItemModel = OrderItemModel; 
+        this.orderModel = OrderModel;
+        this.orderItemModel = OrderItemModel;
+        this.memberService = new MemberService();
     }
 
     public async createOrder(member: Member, input:OrderItemInput[]): Promise<Order> {
@@ -112,7 +113,7 @@ class OrderService {
         
         // If orderStatus PUASE => PROCESS + point 
         if(orderStatus === OrderStatus.PROCESS) {
-            await this.memberService.addUSerPoint(member, +1);
+            await this.memberService.addUserPoint(member, +1);
         }
         return result; 
     }

@@ -16,8 +16,21 @@ const store = new MongoDBStore({
     collection: "sessions", 
 });
     
-/* 1-ENTRANCE */ // app.ts -> idnex.ts -> server.ts 
+/* 1-ENTRANCE */ // app.ts -> idnex.ts -> server.ts
 const app = express();
+
+/* CORS */ // frontend (localhost:3000) and backend (localhost:3003) are different origins;
+// credentials:"include" is used by the frontend, so the origin must be echoed back explicitly (can't use "*")
+app.use(function(req, res, next) {
+    const origin = req.headers.origin;
+    if (origin) res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    if (req.method === "OPTIONS") return res.sendStatus(204);
+    next();
+});
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static("./uploads")); // when data comes with uploads send it to static folder
 app.use(express.urlencoded({extended:true})); // rest api support ?

@@ -8,9 +8,9 @@ const orderSchema = new Schema({
     }, 
 
     orderDelivery:{
-        type: Number,
+        type: Number, // was true instead of type 
         required: true
-    },
+    }, 
 
     orderStatus: {
         type: String , 

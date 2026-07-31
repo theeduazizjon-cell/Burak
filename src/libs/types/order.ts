@@ -9,6 +9,7 @@ export interface OrderItem {
     orderId: ObjectId;
     createdAt: Date; 
     updatedAt: Date; 
+    productId: ObjectId;
 }
 
 export interface Order {
